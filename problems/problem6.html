@@ -28,6 +28,16 @@
     // todo: the center should always take 1 second.  Also, draw a vector rooted at the origin so that it's always pointing at the sphere
     // todo: as it revolves around the center as well.  All optional parameters for the vector can be left as the default.
     // todo: note that sin and cosine in javascript can be called using Math.sin() and Math.cos()
+    let eng = ThreeEngine.new_default_2d();
+    let radius = 1;
+    let sphere_radius = 0.05;
+    eng.animation_loop(function() {
+        let theta = (performance.now() % 1000) / 1000 * 2 * Math.PI;
+        let x = radius * Math.cos(theta);
+        let y = radius * Math.sin(theta);
+        eng.draw_debug_sphere([x, y, 0], sphere_radius, 0xff0000, 1.0);
+        eng.draw_debug_vector([0,0,0], [x,y,0]);
+    });
 
 </script>
 </body>
